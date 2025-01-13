@@ -1,0 +1,5 @@
+<div>
+    @for (item of items; track item.path) {        
+        <app-navigation-item [path]="item.path" [icon]="item.icon" [name]="item.name"/>
+    }
+</div>
