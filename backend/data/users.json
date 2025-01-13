@@ -1,0 +1,14 @@
+[
+    {
+        "id": 0,
+        "name": "Toni Maat",
+        "nickname": "Mr Awesome!",
+        "level": 1
+    },
+    {
+        "id": 1,
+        "name": "Dummy",
+        "nickname": "Mr Dummy!",
+        "level": 1
+    }
+]
