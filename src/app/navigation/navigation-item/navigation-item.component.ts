@@ -13,6 +13,4 @@ export class NavigationItemComponent {
   icon = input.required<IconProp>();
   name = input.required<string>();
   path = input.required<string>();
-  selectedItem = output<string>();
-
 }
