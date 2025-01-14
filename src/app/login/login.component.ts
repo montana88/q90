@@ -1,5 +1,6 @@
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -11,6 +12,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 
 export class LoginComponent {
   loginForm: FormGroup;
+  private httpClient = inject(HttpClient);
 
   constructor(private fb: FormBuilder) {
     this.loginForm = this.fb.group({
@@ -23,6 +25,10 @@ export class LoginComponent {
     console.log('hahah');
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
+      this.httpClient.post('http://localhost:3000/auth/login', {
+        username: loginData.username,
+        password: loginData.password,
+      });
       console.log('Login successful:', loginData);
       // Add logic to handle authentication (e.g., API call)
     } else {

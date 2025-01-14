@@ -4,11 +4,12 @@ const bodyParser = require("body-parser");
 
 const express = require('express');
 const { list } = require("postcss");
-const { log } = require("node:console");
 const app = express();
 const port = 3000;
 
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 // CORS
 
 app.use((req, res, next) => {
@@ -23,15 +24,21 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.post('auth/login', async (req, res) => {
+app.post('/auth/login', async (req, res) => {
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  const fileContent = await fs.readFile("./data/users.json");
-  
-  const usersData = JSON.parse(fileContent);
-  console.log(usersList);
-  console.log(req);
-  res.status(200).json({ places: placesData });
+  let usersData;
+  const user = await checkCredentials(req.body);
+
+  if (user)
+  {
+    const data = await fs.readFile("./data/success.json");
+    usersData = JSON.parse(data);
+  } else {
+    const data = await fs.readFile("./data/error.json");
+    usersData = JSON.parse(data);
+  }
+  res.status(200).json(usersData);
 })
 
 // 404
@@ -45,3 +52,12 @@ app.use((req, res, next) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+const checkCredentials = async (credentials, ) => {
+  const fileContent = await fs.readFile("./data/users.json");
+  const usersData = JSON.parse(fileContent);
+  const isUserFound = usersData.findIndex(data => 
+    data.username === credentials.username && data.password === credentials.password
+  );
+  return isUserFound > -1;
+}
