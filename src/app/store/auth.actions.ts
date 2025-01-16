@@ -5,3 +5,7 @@ export const addUser = createAction(
     '[auth] User',
     props<UserInterface>()
 );
+
+export const clearUser = createAction(
+    '[auth] clearUser'
+);

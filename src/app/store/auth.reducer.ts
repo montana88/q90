@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { addUser } from "./auth.actions";
+import { addUser, clearUser } from "./auth.actions";
 
 export interface UserInterface {
     id: string,
@@ -22,5 +22,6 @@ export const authReducer = createReducer(
             ...state,
             ...action
         };
-    })
+    }),
+    on(clearUser, (state) => null)
 )
