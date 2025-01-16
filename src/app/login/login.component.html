@@ -30,10 +30,14 @@
           </fieldset>
           <div class="flex justify-between items-center">
             <p class="text-lime-500">Need an activation code?</p>
-            <button type="submit" class="bg-gradient-to-br from-lime-500 to-lime-600 cursor-pointer rounded-md p-2">Sign in</button>
+            @if (loading) {
+              <button type="link" class="">loading ...</button>
+            } @else {
+              <button type="submit" class="bg-gradient-to-br from-lime-500 to-lime-600 cursor-pointer rounded-md p-2">Sign in</button>
+            }
           </div>
           
-          @if (!loginForm.valid) {
+          @if (error) {
             <p class="bg-red-600 p-2 rounded-md text-white mt-6">Username or password is incorrect</p>
           }
 

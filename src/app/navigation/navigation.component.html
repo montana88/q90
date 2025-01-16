@@ -1,5 +1,9 @@
-<div>
-    @for (item of items; track item.path) {        
-        <app-navigation-item [path]="item.path" [icon]="item.icon" [name]="item.name"/>
-    }
+<div class="bg-slate-900 text-white h-screen p-3">
+    <ul class="list-none">
+        @for (item of items; track item.path) {      
+            <li class="mb-4">
+                <app-navigation-item [path]="item.path" [icon]="item.icon" [name]="item.name"/>
+            </li>  
+        }
+    </ul>
 </div>

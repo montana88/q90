@@ -7,9 +7,7 @@ const { list } = require("postcss");
 const app = express();
 const port = 3000;
 
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(bodyParser.json());
 // CORS
 
 app.use((req, res, next) => {
@@ -25,6 +23,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/auth/login', async (req, res) => {
+  // add delay for login loader to
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
   let usersData;
