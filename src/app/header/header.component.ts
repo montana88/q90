@@ -21,6 +21,5 @@ export class HeaderComponent {
   logout() {
     this.store.dispatch(clearUser());
     this.router.navigate(['/']);
-    throw new Error('Method not implemented.');
   }
 }
