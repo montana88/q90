@@ -23,5 +23,9 @@ export class DashboardComponent {
   constructor(private store: Store<{auth: UserInterface|null}>) {
     this.auth$ = store.select('auth');
     this.username$ = this.store.select(createSelector(selectAuthState, state => state?.username ?? ''));
+    this.username$.subscribe((state) => {
+      console.log(state);
+      
+    })
   }
 }

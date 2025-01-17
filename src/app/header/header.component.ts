@@ -11,12 +11,10 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   title = 'q90';
-  private router = inject(Router);
+  router = inject(Router);
   showLogin: boolean = true;
 
-  constructor(private store: Store) {
-    this.showLogin = this.router.url !== '/';
-  }
+  constructor(private store: Store) {}
   
   logout() {
     this.store.dispatch(clearUser());
