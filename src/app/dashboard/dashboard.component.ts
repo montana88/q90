@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { createSelector, Store, createFeatureSelector } from '@ngrx/store';
+import { AsyncPipe, CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { NavigationComponent } from '../navigation/navigation.component';
 import { UserInterface } from '../store/auth.reducer';
-import { Router } from '@angular/router';
-import { AsyncPipe, CommonModule } from '@angular/common';
 
 export const selectAuthState = createFeatureSelector<UserInterface|null>('auth');
 

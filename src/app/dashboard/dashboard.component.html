@@ -1,9 +1,9 @@
-<div class="h-screen">
-    <div class="max-w-6xl grid grid-cols-6">
+<div class="h-screen bg-slate-900">
+    <div class="max-w-6xl mx-auto grid grid-cols-8">
         <div class="col-span-2">
             <app-navigation />
         </div>
-        <div class="col-span-4 p-3">
+        <div class="col-span-6 p-3 bg-white relative after:bg-white after:absolute after:left-full after:w-screen after:h-screen after:top-0">
             <h1 class="text-3xl font-bold mb-4">Hello {{ username$ | async }}</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia exercitationem ipsum adipisci soluta perspiciatis totam quod blanditiis debitis, odio nisi quidem, odit, dolore temporibus nihil accusamus laboriosam itaque illo! Voluptatem?</p>
         </div>

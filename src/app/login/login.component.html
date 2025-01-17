@@ -31,7 +31,7 @@
           <div class="flex justify-between items-center">
             <p class="text-lime-500">Need an activation code?</p>
             @if (loading) {
-              <button type="link" class="">loading ...</button>
+              <div class="bg-gradient-to-br from-lime-500 to-lime-600 cursor-pointer rounded-md p-2"><div class="animate-spin"><fa-icon [icon]="faSpinner"></fa-icon></div></div>
             } @else {
               <button type="submit" class="bg-gradient-to-br from-lime-500 to-lime-600 cursor-pointer rounded-md p-2">Sign in</button>
             }

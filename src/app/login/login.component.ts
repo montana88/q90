@@ -4,9 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { addUser } from '../store/auth.actions';
 import { UserInterface } from '../store/auth.reducer';
-import { Observable } from 'rxjs';
 
 interface LoginResponseData {
   "data": UserInterface,
@@ -25,7 +27,7 @@ interface LoginResponseData {
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FontAwesomeModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -34,6 +36,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   loading: boolean = false;
   error: boolean = false;
+  faSpinner = faSpinner;
   private httpClient = inject(HttpClient);
   private router = inject(Router);
   private destroyRef = inject(DestroyRef);
