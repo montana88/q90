@@ -10,6 +10,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { addUser } from '../store/auth.actions';
 import { UserInterface } from '../store/auth.reducer';
 
+// structure login response data
 interface LoginResponseData {
   "data": UserInterface,
   "success": boolean,
@@ -25,13 +26,15 @@ interface LoginResponseData {
   ]
 }
 
+/**
+ * login page for basic auth
+ */
 @Component({
   selector: 'app-login',
   imports: [CommonModule, ReactiveFormsModule, FontAwesomeModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-
 export class LoginComponent {
   loginForm: FormGroup;
   loading: boolean = false;
@@ -48,18 +51,24 @@ export class LoginComponent {
     });
   }
 
+  /**
+   * on form submit this method will post an request to the backend
+   */
   onSubmit() {
     this.error = false;
 
     if (this.loginForm.valid) {
       this.loading = true;
-      const loginData = this.loginForm.value;
+      const formData = this.loginForm.value;
       const subscription = this.httpClient.post('http://localhost:3000/auth/login', {
-        username: loginData.username,
-        password: loginData.password,
+        username: formData.username,
+        password: formData.password,
       }).subscribe({
         next: (resData: Object) => {
-          const loginResData = <LoginResponseData> resData; // cast Object to LoginResponseData
+          
+          // cast Object to LoginResponseData
+          // this is needed cast resData expect an Object. but the code below expect LoginResponseData
+          const loginResData = <LoginResponseData> resData;
 
           if (loginResData.success) {
             this.store.dispatch(addUser(loginResData.data));
