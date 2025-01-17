@@ -23,29 +23,5 @@ export class DashboardComponent {
   constructor(private store: Store<{auth: UserInterface|null}>) {
     this.auth$ = store.select('auth');
     this.username$ = this.store.select(createSelector(selectAuthState, state => state?.username ?? ''));
-    // console.log(this.auth$.value);
-    // this.auth$.subscribe(() => {
-    //   (value: UserInterface|null) => {
-    //     this.user = value;
-    //     console.log(';hahaha');
-    //     console.log(value);
-    //     if (value === null) {
-    //       this.router.navigate(['/']);
-    //     }
-    //   }
-    // });
-  }
-
-  ngOnInit() {
-    this.auth$.subscribe(() => {
-      (value: UserInterface|null) => {
-        console.log(';hahaha');
-
-        // console.log(value);
-        // if (value === null) {
-        //   this.router.navigate(['/']);
-        // }
-      }
-    });
   }
 }
